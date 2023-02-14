@@ -6,6 +6,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import org.hibernate.Hibernate
+import java.io.Serializable
 import java.util.UUID
 
 @Entity
@@ -18,8 +19,7 @@ data class Student(
     @ManyToOne
     @JoinColumn(name = "university_id")
     var university: University
-
-) {
+) : Serializable {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false

@@ -7,6 +7,7 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.JoinTable
 import jakarta.persistence.ManyToMany
 import org.hibernate.Hibernate
+import java.io.Serializable
 import java.util.UUID
 
 @Entity
@@ -23,7 +24,7 @@ data class Lecturer(
         inverseJoinColumns = [JoinColumn(name = "university_id", referencedColumnName = "id")]
     )
     var universities: MutableSet<University> = mutableSetOf()
-    ) {
+    ) : Serializable {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false

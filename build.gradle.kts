@@ -6,6 +6,14 @@ plugins {
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
     kotlin("plugin.jpa") version "1.7.22"
+    kotlin("plugin.allopen") version "1.7.22"
+}
+
+allOpen {
+    annotation("org.springframework.stereotype.Service")
+    annotation("org.springframework.stereotype.RestController")
+    annotation("org.springframework.stereotype.Component")
+    annotation("org.springframework.cache.annotation.Cacheable")
 }
 
 group = "com.example"

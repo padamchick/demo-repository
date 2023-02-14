@@ -1,13 +1,14 @@
 package com.example.redisdemo.model.dto
 
 import com.example.redisdemo.model.entity.Lecturer
+import java.io.Serializable
 import java.util.UUID
 
 data class LecturerWithUniversitiesDto(
     val id: UUID,
     val name: String,
     val universities: List<UniversityDto>
-)
+) : Serializable
 
 fun Lecturer.toLecturerWithUniversitiesDto() =
     LecturerWithUniversitiesDto(

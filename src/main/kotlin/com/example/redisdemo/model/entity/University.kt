@@ -7,6 +7,7 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.JoinTable
 import jakarta.persistence.ManyToMany
 import org.hibernate.Hibernate
+import java.io.Serializable
 import java.util.UUID
 
 @Entity
@@ -16,10 +17,10 @@ data class University(
     var id: UUID? = null,
     var name: String,
 
-    @ManyToMany(mappedBy = "universities")
-    var lecturers: MutableSet<Lecturer> = mutableSetOf()
+//    @ManyToMany(mappedBy = "universities")
+//    var lecturers: MutableSet<Lecturer> = mutableSetOf()
 
-) {
+): Serializable {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false

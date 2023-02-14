@@ -10,3 +10,10 @@ services:
             POSTGRES_DB: 'redis_demo'
         ports: 
         - 5435:5432
+    redis:
+        image: redislabs/redismod
+        container_name: redis_demo
+        volumes:
+          - ./.tmp/redis/data:/data
+        ports:
+          - "6379:6379"

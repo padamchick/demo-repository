@@ -14,7 +14,7 @@ class StudentController(
     private val studentService: StudentService
 ) {
     @GetMapping
-    fun findAll(): List<StudentDto> = studentService.findAll()
+    fun findAll() = studentService.findAll()
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: UUID): StudentDto = studentService.findById(id)

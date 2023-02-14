@@ -1,14 +1,22 @@
 package com.example.redisdemo.model.dto
 
 import com.example.redisdemo.model.entity.Student
+import com.fasterxml.jackson.annotation.JsonProperty
+import org.springframework.cache.annotation.Cacheable
+import java.io.Serializable
 import java.util.UUID
 
 data class StudentDto(
-    val id: UUID,
+    @JsonProperty("id")
+    val id: UUID = UUID.randomUUID(),
+    @JsonProperty("name")
     val name: String,
+    @JsonProperty("age")
     val age: Int,
+    @JsonProperty("university")
     val university: UniversityDto
-)
+): Serializable {
+}
 
 fun Student.toStudentDto() =
     StudentDto(
