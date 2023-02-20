@@ -2,6 +2,7 @@ package com.example.redisdemo.controller
 
 import com.example.redisdemo.model.dto.StudentDto
 import com.example.redisdemo.service.StudentService
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -14,7 +15,8 @@ class StudentController(
     private val studentService: StudentService
 ) {
     @GetMapping
-    fun findAll(): List<StudentDto> = studentService.findAll()
+    fun findAll(): ResponseEntity<List<StudentDto>> = ResponseEntity.ok(studentService.findAll())
+
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: UUID): StudentDto = studentService.findById(id)
